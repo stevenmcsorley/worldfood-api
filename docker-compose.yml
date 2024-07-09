@@ -28,7 +28,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.off_api.rule=Host(`api.ohmdesign.co.uk`)"
+      - "traefik.http.routers.off_api.entrypoints=websecure"
       - "traefik.http.services.off_api.loadbalancer.server.port=${PORT}"
+      - "traefik.http.routers.off_api.tls.certresolver=myresolver"
     networks:
       - backend
       - traefik_network
@@ -49,7 +51,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.off_mongo_express.rule=Host(`db.ohmdesign.co.uk`)"
+      - "traefik.http.routers.off_mongo_express.entrypoints=websecure"
       - "traefik.http.services.off_mongo_express.loadbalancer.server.port=8081"
+      - "traefik.http.routers.off_mongo_express.tls.certresolver=myresolver"
     networks:
       - backend
       - traefik_network
