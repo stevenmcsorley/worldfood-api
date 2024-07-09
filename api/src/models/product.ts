@@ -1,0 +1,41 @@
+import mongoose from "mongoose";
+
+const ProductSchema = new mongoose.Schema({
+  code: String,
+  product_name: String,
+  brands: String,
+  image_url: String,
+  quantity: String,
+  ingredients_text: String,
+  nutrition_grades_tags: [String],
+  ecoscore_score: Number,
+  serving_quantity: Number,
+  serving_size: String,
+  serving_quantity_unit: String,
+  nutriments: {
+    "energy-kcal_100g": Number,
+    "energy-kcal_serving": Number,
+    proteins_100g: Number,
+    proteins_serving: Number,
+    carbohydrates_100g: Number,
+    carbohydrates_serving: Number,
+    fat_100g: Number,
+    fat_serving: Number,
+    "saturated-fat_100g": Number,
+    "saturated-fat_serving": Number,
+    "polyunsaturated-fat_100g": Number,
+    "polyunsaturated-fat_serving": Number,
+    "monounsaturated-fat_100g": Number,
+    "monounsaturated-fat_serving": Number,
+    cholesterol_100g: Number,
+    cholesterol_serving: Number,
+    sodium_100g: Number,
+    sodium_serving: Number,
+    fiber_100g: Number,
+    fiber_serving: Number,
+    sugars_100g: Number,
+    sugars_serving: Number,
+  },
+});
+
+export const Product = mongoose.model("Product", ProductSchema);
